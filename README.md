@@ -72,3 +72,42 @@ validation/
   ```
   python src/predict-cnn.py
   ```
+
+#Prediction Example
+
+![result_example/result_ex](https://github.com/Yunbin-Chang/Banana_Image_Classifier/blob/master/result_example/result_ex.jpg)
+
+above image is prediction result of below script in predict-cnn.py.
+
+  ```
+  TARGET_PATH = "./target.jpg"
+
+def predict(file):
+  x = load_img(file, target_size=(img_width,img_height))
+  x = img_to_array(x)
+  x = np.expand_dims(x, axis=0)
+  array = model.predict(x)
+  #result = array[0]
+  print(array)
+  
+  if array[0][0] == 1:
+    print("Predicted answer: BANANA")
+    answer = 'banana'
+  else:
+    print("Predicted answer: OTHER")
+    answer = 'other'
+
+
+print("-------------------------------")
+predict("./banana (1).jpg")
+predict("./banana (2).jpg")
+predict("./banana (3).jpg")
+predict("./banana (4).jpg")
+predict("./banana (5).jpg")
+print("-------------------------------")
+predict("./other (1).jpg")
+predict("./other (2).jpg")
+predict("./other (3).jpg")
+predict("./other (4).jpg")
+predict("./other (5).jpg")
+  ```

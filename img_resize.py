@@ -1,7 +1,7 @@
 import glob
 from PIL import Image
 
-imglist = glob.glob("./other_dataset/*.jpg")
+imglist = glob.glob("./test/*.jpg")
 
 num = 0
 for img_path in imglist:

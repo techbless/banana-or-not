@@ -40,24 +40,24 @@
   
 ```
 ./data/  
-train/  
-  banana/  
-    banana (1).jpg  
-    banana (2).jpg  
-    ...  
-  other/  
-    other (1).jpg  
-    other (2).jpg  
-    ...  
-validation/  
-  banana/  
-    banana (1).jpg  
-    banana (2).jpg  
-    ...  
-  other/  
-    other (1).jpg  
-    other (2).jpg  
-    ...  
+  train/  
+    banana/  
+      banana (1).jpg  
+      banana (2).jpg  
+      ...  
+    other/  
+      other (1).jpg  
+      other (2).jpg  
+      ...  
+  validation/  
+    banana/  
+      banana (1).jpg  
+      banana (2).jpg  
+      ...  
+    other/  
+      other (1).jpg  
+      other (2).jpg  
+      ...  
  ```
   Second of all, train your dataset by running train script.
   

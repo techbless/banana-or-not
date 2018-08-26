@@ -20,11 +20,17 @@
 ## Image Dataset Information
 
   Image Dataset should be 250px squared size.  
-  If you want to use other Image Size, Change values of variable in train-binary.py
+  If you want to use other Image Size, Change values of variable in train-cnn.py
   
   ```python
     # dimensions of our images.
     img_width, img_height = 250, 250 # Change 250 to your own data_set image size value.
+  ```
+
+  or you can resize your own image automatically with 
+
+  ```
+  python src/img_resize.py
   ```
   
   
@@ -56,7 +62,7 @@ validation/
   Second of all, train your dataset by running train script.
   
   ```
-  python src/train-binary2.py
+  python src/train-cnn.py
   ```
  
  the model and weights will be saved to './model'
@@ -64,5 +70,5 @@ validation/
   Last, Predict any image with your learned model.
   
   ```
-  python src/predict-binary2.py
+  python src/predict-cnn.py
   ```

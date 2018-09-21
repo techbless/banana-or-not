@@ -9,6 +9,7 @@ from keras.layers import Convolution2D, MaxPooling2D, ZeroPadding2D
 from keras import optimizers
 from keras import applications
 from keras.models import Model
+from keras.callbacks import TensorBoard
 
 # dimensions of our images.
 img_width, img_height = 250, 250
@@ -39,46 +40,59 @@ validation_generator = datagen.flow_from_directory(
 
 # a simple stack of 3 convolution layers with a ReLU activation and followed by max-pooling layers.
 model = Sequential()
-model.add(Convolution2D(32, (3, 3), input_shape=(img_width, img_height,3)))
+model.add(Convolution2D(48, (5, 5), input_shape=(img_width, img_height, 3), padding='same'))
 model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(MaxPooling2D(pool_size=(3, 3)))
 
-model.add(Convolution2D(32, (3, 3)))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Dropout(0.25))
 
-model.add(Convolution2D(64, (3, 3)))
+model.add(Convolution2D(56, (3, 3), padding='same'))
 model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(MaxPooling2D(pool_size=(3, 3)))
 
-model.add(Convolution2D(128, (3, 3)))
+model.add(Dropout(0.25))
+
+model.add(Convolution2D(64, (3, 3), padding='same'))
 model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(MaxPooling2D(pool_size=(3, 3)))
 
 model.add(Flatten())
 model.add(Dense(64))
 model.add(Activation('relu'))
-model.add(Dropout(0.25))
+
+model.add(Dropout(0.5))
+
 model.add(Dense(2))
 model.add(Activation('softmax'))
 
 
 model.compile(loss='categorical_crossentropy',
-              optimizer='rmsprop',
+              optimizer='adam',
               metrics=['accuracy'])
 
-epochs = 50
-train_samples = 1419
+epochs = 80
+train_samples = 1819
 validation_samples = 323
+
+
+tensorboard = TensorBoard(log_dir='./logs', histogram_freq=0,
+         write_graph=True, write_images=False)
+
 
 model.fit_generator(
         train_generator,
         steps_per_epoch=train_samples // batch_size,
         epochs=epochs,
         validation_data=validation_generator,
-        validation_steps=validation_samples // batch_size) #batch size originally
+        validation_steps=validation_samples // batch_size,
+        callbacks=[tensorboard]
+        ) #batch size originally
 #About 60 seconds an epoch when using CPU
 
 
 model.save('./models/model.h5')
 model.save_weights('./models/model_wieght.h5')
+
+print(model.summary())
+
+

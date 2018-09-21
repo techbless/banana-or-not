@@ -73,7 +73,7 @@
   python src/predict-cnn.py
   ```
 
-#Summary of Neural Network
+## Summary of Neural Network
   ```python
     _________________________________________________________________
     Layer (type)                 Output Shape              Param #
@@ -118,7 +118,7 @@
     _________________________________________________________________
   ```
 
-#Prediction Example
+## Prediction Example
 
 ![result_example/result_ex](https://github.com/Yunbin-Chang/Banana_Image_Classifier/blob/master/result_example/result_ex.jpg)
 

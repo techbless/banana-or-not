@@ -1,4 +1,4 @@
-# Banana_Image_Classifier
+# Keras_Image_Classifier
   It is Image Classifier that recognize banana. but It could be used for multi categorical classifier 
   because of using not sigmoid or something, but softmax. If you want to use as multi categorical classifier.
   Add your own additional image data_set (which is categorized with directory name) to './data/train/' and './data/validation/'.

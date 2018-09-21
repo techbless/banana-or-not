@@ -9,7 +9,6 @@ model_weights_path = './models/model_wieght.h5'
 model = load_model(model_path)
 model.load_weights(model_weights_path)
 
-TARGET_PATH = "./target.jpg"
 
 def predict(file):
   x = load_img(file, target_size=(img_width,img_height))
@@ -21,10 +20,8 @@ def predict(file):
   
   if array[0][0] == 1:
     print("Predicted answer: BANANA")
-    answer = 'banana'
   else:
     print("Predicted answer: OTHER")
-    answer = 'other'
 
 
 print("-------------------------------")

@@ -125,7 +125,6 @@
 above image is prediction result of below script in predict-cnn.py.
 
   ```python
-  TARGET_PATH = "./target.jpg"
 
 def predict(file):
   x = load_img(file, target_size=(img_width,img_height))
@@ -137,10 +136,8 @@ def predict(file):
   
   if array[0][0] == 1:
     print("Predicted answer: BANANA")
-    answer = 'banana'
   else:
     print("Predicted answer: OTHER")
-    answer = 'other'
 
 
 print("-------------------------------")
